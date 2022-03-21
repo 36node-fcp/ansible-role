@@ -1,0 +1,70 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecs-api
+  labels:
+    app: ecs-api
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: ecs-api
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecs-api
+  labels:
+    app: ecs-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecs-api
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: ecs-api
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: ecs-api
+          image: "{{ ecs_api_image }}"
+          imagePullPolicy: "{{ image_pull_policy }}"
+          env:
+            - name: DEPLOY_TIME
+              value: "{{ ecs_api_time }}"
+            - name: PORT
+              value: "{{ ecs_api_port }}"
+            - name: URL_PREFIX
+              value: "{{ ecs_api_path }}"
+            - name: MONGODB_CONNECTION
+              value: "{{ ecs_api_mongodb_connection }}"
+            - name: MQTT_URL
+              value: "{{ ecs_api_mqtt_url }}"
+            - name: MQTT_TOPIC_DAHUA_RECORD
+              value: "{{ ecs_api_dahua_mqtt_topic }}"
+            - name: MQTT_TOPIC_GUANGXIN_ILLEGAL
+              value: "{{ ecs_api_guangxin_mqtt_topic }}"
+            - name: MQTT_TOPIC_HENGTONG_ILLEGAL
+              value: "{{ ecs_api_hengtong_mqtt_topic}}"
+          ports:
+            - name: http
+              containerPort: 80
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+            requests:
+              cpu: "10m"
+              memory: "32Mi"

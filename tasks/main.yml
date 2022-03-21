@@ -1,0 +1,37 @@
+---
+# tasks file for fcp-ecs
+- name: Namespace for fcp-ecs
+  community.kubernetes.k8s:
+    state: "{{ fcp_ecs_state }}"
+    name: "{{ fcp_ecs_namespace }}"
+    api_version: v1
+    kind: Namespace
+
+- name: fcp-ecs service
+  community.kubernetes.k8s:
+    state: "{{ fcp_ecs_state }}"
+    namespace: "{{ fcp_ecs_namespace }}"
+    template: "{{ item }}"
+  with_items:
+    - pvc.yml.j2
+    - ecs-map-cm.yml.j2
+    - ecs-map.yml.j2
+    - ecs-api.yml.j2
+    - ecs-admin.yml.j2
+    - ecs-robot-dahua.yml.j2
+    - ecs-robot-guangxin.yml.j2
+    - ecs-robot-hengtong.yml.j2
+    - ingress.yml.j2
+  tags:
+    - ecs-service
+
+- name: fcp-ecs service
+  community.kubernetes.k8s:
+    state: "{{ fcp_ecs_state }}"
+    namespace: "{{ fcp_ecs_namespace }}"
+    template: "{{ item }}"
+  with_items:
+    - ecs-mock.yml.j2
+  when: ecs_mock|bool == true
+  tags:
+    - ecs-uat

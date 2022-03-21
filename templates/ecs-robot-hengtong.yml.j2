@@ -1,0 +1,72 @@
+#jinja2: lstrip_blocks: "True", trim_blocks: "True"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecs-robot-hengtong
+  labels:
+    app: ecs-robot-hengtong
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: ecs-robot-hengtong
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecs-robot-hengtong
+  labels:
+    app: ecs-robot-hengtong
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecs-robot-hengtong
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: ecs-robot-hengtong
+        name: ecs-robot-hengtong
+        vector.dev/enable: "{{ ecs_robot_hengtong_vector_enabled }}"
+        {% if ecs_robot_hengtong_vector_topic %}
+        vector.dev/topic: "{{ ecs_robot_hengtong_vector_topic }}"
+        {% endif %}
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: ecs-robot-hengtong
+          image: "{{ ecs_robot_hengtong_image }}"
+          imagePullPolicy: "{{ image_pull_policy }}"
+          env:
+            - name: DEPLOY_TIME
+              value: "{{ ecs_robot_hengtong_time }}"
+            - name: PORT
+              value: "{{ ecs_robot_hengtong_port }}"
+            - name: LOG_LEVEL
+              value: "{{ ecs_robot_hengtong_log_level }}"
+            - name: URL_PREFIX
+              value: "{{ ecs_robot_hengtong_path }}"
+            - name: MQTT_URL
+              value: "{{ ecs_robot_hengtong_mqtt_url }}"
+            - name: MQTT_TOPIC_HENGTONG_ILLEGAL
+              value: "{{ ecs_robot_hengtong_mqtt_topic }}"
+          ports:
+            - name: http
+              containerPort: 80
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+            requests:
+              cpu: "10m"
+              memory: "32Mi"

@@ -1,0 +1,99 @@
+---
+# defaults file for fcp-ecs
+namespace: fcp-ecs
+state: present
+image_pull_policy: Always
+
+fcp_ecs_state: "{{ state }}"
+fcp_ecs_namespace: "{{ namespace }}"
+
+ingress_name: fcp-ecs
+domain: fcp-ecs.36node.com
+
+mongodb_connection: mongodb://root:it_is_a_secret@mongodb
+
+ecs_tls: true
+ecs_admin_domain: "{{ domain }}"
+ecs_api_domain: "{{ domain }}"
+ecs_map_domain: "{{ domain }}"
+ecs_robot_guangxin_domain: "{{ domain }}"
+ecs_robot_hengtong_domain: "{{ domain }}"
+
+ecs_api_version: latest
+ecs_api_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-api:{{ ecs_api_version }}"
+ecs_api_time: 20210804120000
+ecs_api_port: "80"
+ecs_api_path: /v0
+ecs_api_mongodb_connection: "{{ mongodb_connection }}/core?authSource=admin"
+ecs_api_mqtt_url: mqtt://mqtt
+ecs_api_dahua_mqtt_topic: track/record/dahua
+ecs_api_guangxin_mqtt_topic: track/illegal/guangxin
+ecs_api_hengtong_mqtt_topic: track/illegal/hengtong
+
+ecs_admin_version: latest
+ecs_admin_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-admin:{{ ecs_admin_version }}"
+ecs_admin_time: 20210804120000
+ecs_admin_path: /
+ecs_admin_scope:
+ecs_admin_provider:
+ecs_admin_login_fail_lock_time_m: 5
+ecs_admin_auth_ep:
+ecs_admin_api_ep:
+ecs_admin_guangxin_ep:
+ecs_admin_map_ep:
+ecs_admin_page_max_width: 1600
+ecs_admin_map_current_zoom: 14
+ecs_admin_map_min_zoom: 13
+ecs_admin_map_max_zoom: 17
+ecs_admin_oss_force_path: off
+ecs_admin_oss_region:
+ecs_admin_oss_ep:
+ecs_admin_oss_bucket:
+ecs_admin_oss_url:
+ecs_admin_oss_access_id:
+ecs_admin_oss_access_secret:
+
+ecs_map_path: /maps/image
+ecs_map_fs_storage_class:
+
+ecs_robot_dahua_version: latest
+ecs_robot_dahua_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-robot-dahua:{{ ecs_robot_dahua_version }}"
+ecs_robot_dahua_time: 20210804120000
+ecs_robot_dahua_log_level: info
+ecs_robot_dahua_mqtt_url: mqtt://mqtt
+ecs_robot_dahua_mqtt_topic: track/record/dahua
+ecs_robot_dahua_ep:
+ecs_robot_dahua_usename:
+ecs_robot_dahua_password:
+ecs_robot_dahua_vector_enabled: "true"
+ecs_robot_dahua_vector_topic: ecs-dahua
+
+ecs_robot_guangxin_version: latest
+ecs_robot_guangxin_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-robot-guangxin:{{ ecs_robot_guangxin_version }}"
+ecs_robot_guangxin_time: 20210804120000
+ecs_robot_guangxin_port: "80"
+ecs_robot_guangxin_log_level: info
+ecs_robot_guangxin_path: /v0
+ecs_robot_guangxin_mongodb_connection: "{{ mongodb_connection }}/core?authSource=admin"
+ecs_robot_guangxin_mqtt_url: mqtt://mqtt
+ecs_robot_guangxin_mqtt_topic: track/illegal/guangxin
+ecs_robot_guangxin_ep:
+ecs_robot_guangxin_vector_enabled: "true"
+ecs_robot_guangxin_vector_topic: ecs-guangxin
+
+ecs_robot_hengtong_version: latest
+ecs_robot_hengtong_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-robot-hengtong:{{ ecs_robot_hengtong_version }}"
+ecs_robot_hengtong_time: 20210804120000
+ecs_robot_hengtong_port: "80"
+ecs_robot_hengtong_log_level: info
+ecs_robot_hengtong_path: /v0
+ecs_robot_hengtong_mqtt_url: mqtt://mqtt
+ecs_robot_hengtong_mqtt_topic: track/illegal/hengtong
+ecs_robot_hengtong_vector_enabled: "true"
+ecs_robot_hengtong_vector_topic: ecs-hengtong
+
+ecs_mock: true
+ecs_mock_version: latest
+ecs_mock_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-api:{{ ecs_mock_version }}"
+ecs_mock_time: 20210804120000
+ecs_mock_mqtt_url: mqtt://mqtt

@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ecs-mock
+  labels:
+    app: ecs-mock
+spec:
+  selector:
+    matchLabels:
+      app: ecs-mock
+  serviceName: ecs-mock-svc
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ecs-mock
+        name: ecs-mock
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: ecs-mock
+          image: "{{ ecs_mock_image }}"
+          imagePullPolicy: "{{ image_pull_policy }}"
+          env:
+            - name: DEPLOY_TIME
+              value: "{{ ecs_mock_time }}"
+            - name: MQTT_URL
+              value: "{{ ecs_mock_mqtt_url}}"
+          command: ["npm"]
+          args: ["run", "mock"]
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "10m"
+              memory: "32Mi"

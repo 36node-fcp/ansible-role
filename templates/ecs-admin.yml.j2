@@ -1,0 +1,92 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecs-admin
+  labels:
+    app: ecs-admin
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: ecs-admin
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecs-admin
+  labels:
+    app: ecs-admin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecs-admin
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: ecs-admin
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: ecs-admin
+          image: "{{ ecs_admin_image }}"
+          imagePullPolicy: "{{ image_pull_policy }}"
+          env:
+            - name: DEPLOY_TIME
+              value: "{{ ecs_admin_time }}"
+            - name: REACT_APP_SCOPE
+              value: "{{ ecs_admin_scope }}"
+            - name: REACT_APP_PROVIDER
+              value: "{{ ecs_admin_provider }}"
+            - name: REACT_APP_LOGIN_FAIL_LOCK_TIME_M
+              value: "{{ ecs_admin_login_fail_lock_time_m }}"
+            - name: REACT_APP_AUTH_ENDPOINT
+              value: "{{ ecs_admin_auth_ep }}"
+            - name: REACT_APP_ESC_ENDPOINT
+              value: "{{ ecs_admin_api_ep }}"
+            - name: REACT_APP_GUANGXIN_ENDPOINT
+              value: "{{ ecs_admin_guangxin_ep }}"
+            - name: REACT_APP_PAGE_MAX_WIDTH
+              value: "{{ ecs_admin_page_max_width }}"
+            - name: REACT_APP_MAP_ENDPOINT
+              value: "{{ ecs_admin_map_ep }}"
+            - name: REACT_APP_MAP_CURRENT_ZOOM
+              value: "{{ ecs_admin_map_current_zoom }}"
+            - name: REACT_APP_MAP_MIN_ZOOM
+              value: "{{ ecs_admin_map_min_zoom }}"
+            - name: REACT_APP_MAP_MAX_ZOOM
+              value: "{{ ecs_admin_map_max_zoom }}"
+            - name: REACT_APP_OSS_FORCE_PATH_STYLE
+              value: "{{ ecs_admin_oss_force_path }}"
+            - name: REACT_APP_OSS_REGION
+              value: "{{ ecs_admin_oss_region }}"
+            - name: REACT_APP_OSS_ENDPOINT
+              value: "{{ ecs_admin_oss_ep }}"
+            - name: REACT_APP_OSS_BUCKET
+              value: "{{ ecs_admin_oss_bucket }}"
+            - name: REACT_APP_OSS_URL
+              value: "{{ ecs_admin_oss_url }}"
+            - name: REACT_APP_OSS_ACCESS_KEY_ID
+              value: "{{ ecs_admin_oss_access_id }}"
+            - name: REACT_APP_OSS_ACCESS_KEY_SECRET
+              value: "{{ ecs_admin_oss_access_secret }}"
+          ports:
+            - name: http
+              containerPort: 80
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+            requests:
+              cpu: "10m"
+              memory: "32Mi"

@@ -1,0 +1,65 @@
+#jinja2: lstrip_blocks: "True", trim_blocks: "True"
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ ingress_name }}"
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    {% if ecs_tls %}
+    cert-manager.io/cluster-issuer: "{{ cert_issuer }}"
+    {% endif %}
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: ecs-api
+              servicePort: 80
+            path: "{{ ecs_api_path }}"
+      {% if ecs_api_domain %}
+      host: "{{ ecs_api_domain }}"
+      {% endif %}
+    - http:
+        paths:
+          - backend:
+              serviceName: ecs-map
+              servicePort: 80
+            path: "{{ ecs_map_path }}"
+      {% if ecs_map_domain %}
+      host: "{{ ecs_api_domain }}"
+      {% endif %}
+    - http:
+        paths:
+          - backend:
+              serviceName: ecs-robot-guangxin
+              servicePort: 80
+            path: "{{ ecs_robot_guangxin_path }}"
+      {% if ecs_map_domain %}
+      host: "{{ ecs_robot_guangxin_domain }}"
+      {% endif %}
+    - http:
+        paths:
+          - backend:
+              serviceName: ecs-robot-hengtong
+              servicePort: 80
+            path: "{{ ecs_robot_hengtong_path }}"
+      {% if ecs_map_domain %}
+      host: "{{ ecs_robot_hengtong_domain }}"
+      {% endif %}
+    - http:
+        paths:
+          - backend:
+              serviceName: ecs-admin
+              servicePort: 80
+            path: "{{ ecs_admin_path }}"
+      {% if ecs_map_domain %}
+      host: "{{ ecs_admin_domain }}"
+      {% endif %}
+  {% if ecs_tls %}
+  tls:
+    - hosts:
+        - "{{ domain }}"
+        - "*.{{ domain }}"
+      secretName: "{{ domain }}"
+  {% endif %}
