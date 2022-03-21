@@ -66,7 +66,7 @@ ecs_robot_dahua_ep:
 ecs_robot_dahua_usename:
 ecs_robot_dahua_password:
 ecs_robot_dahua_vector_enabled: "true"
-ecs_robot_dahua_vector_topic: ecs-dahua
+ecs_robot_dahua_vector_topic: false
 
 ecs_robot_guangxin_version: latest
 ecs_robot_guangxin_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-robot-guangxin:{{ ecs_robot_guangxin_version }}"
@@ -79,7 +79,7 @@ ecs_robot_guangxin_mqtt_url: mqtt://mqtt
 ecs_robot_guangxin_mqtt_topic: track/illegal/guangxin
 ecs_robot_guangxin_ep:
 ecs_robot_guangxin_vector_enabled: "true"
-ecs_robot_guangxin_vector_topic: ecs-guangxin
+ecs_robot_guangxin_vector_topic: false
 
 ecs_robot_hengtong_version: latest
 ecs_robot_hengtong_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-robot-hengtong:{{ ecs_robot_hengtong_version }}"
@@ -90,7 +90,7 @@ ecs_robot_hengtong_path: /v0
 ecs_robot_hengtong_mqtt_url: mqtt://mqtt
 ecs_robot_hengtong_mqtt_topic: track/illegal/hengtong
 ecs_robot_hengtong_vector_enabled: "true"
-ecs_robot_hengtong_vector_topic: ecs-hengtong
+ecs_robot_hengtong_vector_topic: false
 
 ecs_robot_etc_version: latest
 ecs_robot_etc_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-robot-etc:{{ ecs_robot_etc_version }}"
@@ -103,6 +103,7 @@ ecs_robot_etc_mqtt_url: mqtt://mqtt
 ecs_robot_etc_mqtt_topic: track/illegal/etc
 ecs_robot_etc_ep:
 ecs_robot_etc_vector_enabled: "true"
+ecs_robot_etc_vector_topic: false
 
 ecs_mock: true
 ecs_mock_version: latest
