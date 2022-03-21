@@ -27,7 +27,7 @@ spec:
               servicePort: 80
             path: "{{ ecs_map_path }}"
       {% if ecs_map_domain %}
-      host: "{{ ecs_api_domain }}"
+      host: "{{ ecs_map_domain }}"
       {% endif %}
     - http:
         paths:
@@ -35,7 +35,7 @@ spec:
               serviceName: ecs-robot-guangxin
               servicePort: 80
             path: "{{ ecs_robot_guangxin_path }}"
-      {% if ecs_map_domain %}
+      {% if ecs_robot_guangxin_domain %}
       host: "{{ ecs_robot_guangxin_domain }}"
       {% endif %}
     - http:
@@ -44,7 +44,7 @@ spec:
               serviceName: ecs-robot-hengtong
               servicePort: 80
             path: "{{ ecs_robot_hengtong_path }}"
-      {% if ecs_map_domain %}
+      {% if ecs_robot_hengtong_domain %}
       host: "{{ ecs_robot_hengtong_domain }}"
       {% endif %}
     - http:
@@ -53,7 +53,7 @@ spec:
               serviceName: ecs-admin
               servicePort: 80
             path: "{{ ecs_admin_path }}"
-      {% if ecs_map_domain %}
+      {% if ecs_admin_domain %}
       host: "{{ ecs_admin_domain }}"
       {% endif %}
   {% if ecs_tls %}
