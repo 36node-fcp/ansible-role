@@ -21,6 +21,7 @@
     - ecs-robot-dahua.yml.j2
     - ecs-robot-guangxin.yml.j2
     - ecs-robot-hengtong.yml.j2
+    - ecs-robot-etc.yml.j2
     - ingress.yml.j2
   tags:
     - ecs-service

@@ -92,6 +92,18 @@ ecs_robot_hengtong_mqtt_topic: track/illegal/hengtong
 ecs_robot_hengtong_vector_enabled: "true"
 ecs_robot_hengtong_vector_topic: ecs-hengtong
 
+ecs_robot_etc_version: latest
+ecs_robot_etc_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-robot-etc:{{ ecs_robot_etc_version }}"
+ecs_robot_etc_time: 20210804120000
+ecs_robot_etc_port: "80"
+ecs_robot_etc_log_level: info
+ecs_robot_etc_path: /v0
+ecs_robot_etc_mongodb_connection: "{{ mongodb_connection }}/core?authSource=admin"
+ecs_robot_etc_mqtt_url: mqtt://mqtt
+ecs_robot_etc_mqtt_topic: track/illegal/etc
+ecs_robot_etc_ep:
+ecs_robot_etc_vector_enabled: "true"
+
 ecs_mock: true
 ecs_mock_version: latest
 ecs_mock_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-api:{{ ecs_mock_version }}"

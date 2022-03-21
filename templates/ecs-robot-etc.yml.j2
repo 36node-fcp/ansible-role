@@ -1,0 +1,72 @@
+#jinja2: lstrip_blocks: "True", trim_blocks: "True"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecs-robot-etc
+  labels:
+    app: ecs-robot-etc
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector:
+    app: ecs-robot-etc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecs-robot-etc
+  labels:
+    app: ecs-robot-etc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecs-robot-etc
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: ecs-robot-etc
+        name: ecs-robot-etc
+        vector.dev/enable: "{{ ecs_robot_etc_vector_enabled }}"
+        {% if ecs_robot_etc_vector_topic %}
+        vector.dev/topic: "{{ ecs_robot_etc_vector_topic }}"
+        {% endif %}
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: ecs-robot-etc
+          image: "{{ ecs_robot_etc_image }}"
+          imagePullPolicy: "{{ image_pull_policy }}"
+          env:
+            - name: DEPLOY_TIME
+              value: "{{ ecs_robot_etc_time }}"
+            - name: PORT
+              value: "{{ ecs_robot_etc_port }}"
+            - name: LOG_LEVEL
+              value: "{{ ecs_robot_etc_log_level }}"
+            - name: URL_PREFIX
+              value: "{{ ecs_robot_etc_path }}"
+            - name: MONGODB_CONNECTION
+              value: "{{ ecs_robot_etc_mongodb_connection }}"
+            - name: MQTT_URL
+              value: "{{ ecs_robot_etc_mqtt_url }}"
+          ports:
+            - name: http
+              containerPort: 80
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+            requests:
+              cpu: "10m"
+              memory: "32Mi"
