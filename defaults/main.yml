@@ -42,9 +42,11 @@ ecs_admin_api_ep:
 ecs_admin_guangxin_ep:
 ecs_admin_map_ep:
 ecs_admin_page_max_width: 1600
+ecs_admin_map_center: 29.83645453,121.37695313
 ecs_admin_map_current_zoom: 14
-ecs_admin_map_min_zoom: 13
+ecs_admin_map_min_zoom: 12
 ecs_admin_map_max_zoom: 17
+ecs_admin_map_gantry_min_zoom: 14
 ecs_admin_oss_force_path: off
 ecs_admin_oss_region:
 ecs_admin_oss_ep:
@@ -53,8 +55,10 @@ ecs_admin_oss_url:
 ecs_admin_oss_access_id:
 ecs_admin_oss_access_secret:
 
-ecs_map_path: /maps/image
-ecs_map_fs_storage_class:
+ecs_map_version: 0.8.2
+ecs_map_path: /ecs-map
+ecs_map_file_path: /opt/map
+ecs_map_storage_class:
 
 ecs_robot_dahua_version: latest
 ecs_robot_dahua_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-robot-dahua:{{ ecs_robot_dahua_version }}"

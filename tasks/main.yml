@@ -14,7 +14,6 @@
     template: "{{ item }}"
   with_items:
     - pvc.yml.j2
-    - ecs-map-cm.yml.j2
     - ecs-map.yml.j2
     - ecs-api.yml.j2
     - ecs-admin.yml.j2
