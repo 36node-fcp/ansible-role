@@ -84,6 +84,12 @@ spec:
               value: "{{ ecs_admin_oss_access_id }}"
             - name: REACT_APP_OSS_ACCESS_KEY_SECRET
               value: "{{ ecs_admin_oss_access_secret }}"
+            - name: REACT_APP_MQTT_URL
+              value: "{{ ecs_admin_mqtt_url }}"
+            - name: REACT_APP_MQTT_TOPIC_NOTIFY_WARNING
+              value: "{{ ecs_admin_mqtt_topic_notify_warning }}"
+            - name: REACT_APP_WARNING_FLASH_TIME_S
+              value: "{{ ecs_admin_warning_flash_time_s }}"
           ports:
             - name: http
               containerPort: 80

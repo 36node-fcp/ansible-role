@@ -26,9 +26,9 @@ ecs_api_port: "80"
 ecs_api_path: /v0
 ecs_api_mongodb_connection: "{{ mongodb_connection }}/core?authSource=admin"
 ecs_api_mqtt_url: mqtt://mqtt
-ecs_api_dahua_mqtt_topic: track/record/dahua
-ecs_api_guangxin_mqtt_topic: track/illegal/guangxin
-ecs_api_hengtong_mqtt_topic: track/illegal/hengtong
+ecs_api_dahua_mqtt_topic: record/track
+ecs_api_guangxin_mqtt_topic: record/track
+ecs_api_hengtong_mqtt_topic: record/illegal
 
 ecs_admin_version: latest
 ecs_admin_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-admin:{{ ecs_admin_version }}"
@@ -54,6 +54,9 @@ ecs_admin_oss_bucket:
 ecs_admin_oss_url:
 ecs_admin_oss_access_id:
 ecs_admin_oss_access_secret:
+ecs_admin_mqtt_url:
+ecs_admin_mqtt_topic_notify_warning: notify/warning
+ecs_admin_warning_flash_time_s: 10
 
 ecs_map_version: 0.8.2
 ecs_map_path: /ecs-map
@@ -65,7 +68,7 @@ ecs_robot_dahua_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-robot-da
 ecs_robot_dahua_time: 20210804120000
 ecs_robot_dahua_log_level: info
 ecs_robot_dahua_mqtt_url: mqtt://mqtt
-ecs_robot_dahua_mqtt_topic: track/record/dahua
+ecs_robot_dahua_mqtt_topic: record/track
 ecs_robot_dahua_ep:
 ecs_robot_dahua_usename:
 ecs_robot_dahua_password:
@@ -80,7 +83,7 @@ ecs_robot_guangxin_log_level: info
 ecs_robot_guangxin_path: /v0
 ecs_robot_guangxin_mongodb_connection: "{{ mongodb_connection }}/core?authSource=admin"
 ecs_robot_guangxin_mqtt_url: mqtt://mqtt
-ecs_robot_guangxin_mqtt_topic: track/illegal/guangxin
+ecs_robot_guangxin_mqtt_topic: record/track
 ecs_robot_guangxin_ep:
 ecs_robot_guangxin_vector_enabled: "true"
 ecs_robot_guangxin_vector_topic: false
@@ -92,7 +95,7 @@ ecs_robot_hengtong_port: "80"
 ecs_robot_hengtong_log_level: info
 ecs_robot_hengtong_path: /v0
 ecs_robot_hengtong_mqtt_url: mqtt://mqtt
-ecs_robot_hengtong_mqtt_topic: track/illegal/hengtong
+ecs_robot_hengtong_mqtt_topic: record/illegal
 ecs_robot_hengtong_vector_enabled: "true"
 ecs_robot_hengtong_vector_topic: false
 
@@ -104,7 +107,7 @@ ecs_robot_etc_log_level: info
 ecs_robot_etc_path: /v0
 ecs_robot_etc_mongodb_connection: "{{ mongodb_connection }}/core?authSource=admin"
 ecs_robot_etc_mqtt_url: mqtt://mqtt
-ecs_robot_etc_mqtt_topic: track/illegal/etc
+ecs_robot_etc_mqtt_topic: record/track
 ecs_robot_etc_ep:
 ecs_robot_etc_vector_enabled: "true"
 ecs_robot_etc_vector_topic: false
