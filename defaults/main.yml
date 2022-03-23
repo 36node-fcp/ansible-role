@@ -12,6 +12,11 @@ domain: fcp-ecs.36node.com
 
 mongodb_connection: mongodb://root:it_is_a_secret@mongodb
 
+mqtt_url: mqtt://mqtt
+mqtt_topic_track_record: record/track
+mqtt_topic_illegal_record: record/illegal
+mqtt_topic_notify_warning: notify/warning
+
 ecs_tls: true
 ecs_admin_domain: "{{ domain }}"
 ecs_api_domain: "{{ domain }}"
@@ -24,11 +29,8 @@ ecs_api_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-api:{{ ecs_api_v
 ecs_api_time: 20210804120000
 ecs_api_port: "80"
 ecs_api_path: /v0
-ecs_api_mongodb_connection: "{{ mongodb_connection }}/core?authSource=admin"
-ecs_api_mqtt_url: mqtt://mqtt
-ecs_api_dahua_mqtt_topic: record/track
-ecs_api_guangxin_mqtt_topic: record/track
-ecs_api_hengtong_mqtt_topic: record/illegal
+ecs_api_mongodb_connection: "{{ mongodb_connection }}/esc-api?authSource=admin"
+ecs_api_mqtt_url: "{{ mqtt_url }}"
 
 ecs_admin_version: latest
 ecs_admin_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-admin:{{ ecs_admin_version }}"
@@ -67,8 +69,7 @@ ecs_robot_dahua_version: latest
 ecs_robot_dahua_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-robot-dahua:{{ ecs_robot_dahua_version }}"
 ecs_robot_dahua_time: 20210804120000
 ecs_robot_dahua_log_level: info
-ecs_robot_dahua_mqtt_url: mqtt://mqtt
-ecs_robot_dahua_mqtt_topic: record/track
+ecs_robot_dahua_mqtt_url: "{{ mqtt_url }}"
 ecs_robot_dahua_ep:
 ecs_robot_dahua_usename:
 ecs_robot_dahua_password:
@@ -81,9 +82,8 @@ ecs_robot_guangxin_time: 20210804120000
 ecs_robot_guangxin_port: "80"
 ecs_robot_guangxin_log_level: info
 ecs_robot_guangxin_path: /v0
-ecs_robot_guangxin_mongodb_connection: "{{ mongodb_connection }}/core?authSource=admin"
-ecs_robot_guangxin_mqtt_url: mqtt://mqtt
-ecs_robot_guangxin_mqtt_topic: record/track
+ecs_robot_guangxin_mongodb_connection: "{{ mongodb_connection }}/esc-robot-guangxin?authSource=admin"
+ecs_robot_guangxin_mqtt_url: "{{ mqtt_url }}"
 ecs_robot_guangxin_ep:
 ecs_robot_guangxin_vector_enabled: "true"
 ecs_robot_guangxin_vector_topic: false
@@ -94,8 +94,7 @@ ecs_robot_hengtong_time: 20210804120000
 ecs_robot_hengtong_port: "80"
 ecs_robot_hengtong_log_level: info
 ecs_robot_hengtong_path: /v0
-ecs_robot_hengtong_mqtt_url: mqtt://mqtt
-ecs_robot_hengtong_mqtt_topic: record/illegal
+ecs_robot_hengtong_mqtt_url: "{{ mqtt_url }}"
 ecs_robot_hengtong_vector_enabled: "true"
 ecs_robot_hengtong_vector_topic: false
 
@@ -105,9 +104,8 @@ ecs_robot_etc_time: 20210804120000
 ecs_robot_etc_port: "80"
 ecs_robot_etc_log_level: info
 ecs_robot_etc_path: /v0
-ecs_robot_etc_mongodb_connection: "{{ mongodb_connection }}/core?authSource=admin"
-ecs_robot_etc_mqtt_url: mqtt://mqtt
-ecs_robot_etc_mqtt_topic: record/track
+ecs_robot_etc_mongodb_connection: "{{ mongodb_connection }}/ecs-robot-etc?authSource=admin"
+ecs_robot_etc_mqtt_url: "{{ mqtt_url }}"
 ecs_robot_etc_ep:
 ecs_robot_etc_vector_enabled: "true"
 ecs_robot_etc_vector_topic: false
@@ -116,4 +114,4 @@ ecs_mock: true
 ecs_mock_version: latest
 ecs_mock_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-api:{{ ecs_mock_version }}"
 ecs_mock_time: 20210804120000
-ecs_mock_mqtt_url: mqtt://mqtt
+ecs_mock_mqtt_url: "{{ mqtt_url }}"

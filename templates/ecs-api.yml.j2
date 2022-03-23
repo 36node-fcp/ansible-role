@@ -52,12 +52,12 @@ spec:
               value: "{{ ecs_api_mongodb_connection }}"
             - name: MQTT_URL
               value: "{{ ecs_api_mqtt_url }}"
-            - name: MQTT_TOPIC_DAHUA_RECORD
-              value: "{{ ecs_api_dahua_mqtt_topic }}"
-            - name: MQTT_TOPIC_GUANGXIN_ILLEGAL
-              value: "{{ ecs_api_guangxin_mqtt_topic }}"
-            - name: MQTT_TOPIC_HENGTONG_ILLEGAL
-              value: "{{ ecs_api_hengtong_mqtt_topic}}"
+            - name: MQTT_TOPIC_TRACK_RECORD
+              value: "{{ mqtt_topic_track_record }}"
+            - name: MQTT_TOPIC_ILLEGAL_RECORD
+              value: "{{ mqtt_topic_illegal_record }}"
+            - name: MQTT_TOPIC_NOTIFY_WARNING
+              value: "{{ mqtt_topic_notify_warning }}"
           ports:
             - name: http
               containerPort: 80

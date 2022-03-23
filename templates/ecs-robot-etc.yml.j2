@@ -38,9 +38,6 @@ spec:
         app: ecs-robot-etc
         name: ecs-robot-etc
         vector.dev/enable: "{{ ecs_robot_etc_vector_enabled }}"
-        {% if ecs_robot_etc_vector_topic %}
-        vector.dev/topic: "{{ ecs_robot_etc_vector_topic }}"
-        {% endif %}
     spec:
       restartPolicy: Always
       containers:
@@ -60,6 +57,8 @@ spec:
               value: "{{ ecs_robot_etc_mongodb_connection }}"
             - name: MQTT_URL
               value: "{{ ecs_robot_etc_mqtt_url }}"
+            - name: MQTT_TOPIC_ILLEGAL_RECORD
+              value: "{{ mqtt_topic_illegal_record }}"              
           ports:
             - name: http
               containerPort: 80

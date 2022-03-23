@@ -58,8 +58,8 @@ spec:
               value: "{{ ecs_robot_hengtong_path }}"
             - name: MQTT_URL
               value: "{{ ecs_robot_hengtong_mqtt_url }}"
-            - name: MQTT_TOPIC_HENGTONG_ILLEGAL
-              value: "{{ ecs_robot_hengtong_mqtt_topic }}"
+            - name: MQTT_TOPIC_ILLEGAL_RECORD
+              value: "{{ mqtt_topic_illegal_record }}"
           ports:
             - name: http
               containerPort: 80
