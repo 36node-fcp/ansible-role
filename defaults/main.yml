@@ -49,9 +49,10 @@ ecs_admin_map_current_zoom: 14
 ecs_admin_map_min_zoom: 12
 ecs_admin_map_max_zoom: 17
 ecs_admin_map_gantry_min_zoom: 14
-ecs_admin_oss_force_path: off
+ecs_admin_oss_force_path: "on"
 ecs_admin_oss_region: cn
-ecs_admin_oss_ep:
+ecs_admin_oss_ep_protocol: https
+ecs_admin_oss_ep_hostname:
 ecs_admin_oss_bucket:
 ecs_admin_oss_url:
 ecs_admin_oss_access_id:
