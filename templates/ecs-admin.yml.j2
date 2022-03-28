@@ -76,18 +76,28 @@ spec:
               value: "{{ ecs_admin_oss_region }}"
             - name: REACT_APP_OSS_EP_PROTOCOL
               value: "{{ ecs_admin_oss_ep_protocol }}"
+            - name: REACT_APP_OSS_EP_HOSTNAME_EMPTY
+              value: "{{ ecs_admin_oss_ep_hostname_empty }}"
             - name: REACT_APP_OSS_EP_HOSTNAME
               value: "{{ ecs_admin_oss_ep_hostname }}"
+            - name: REACT_APP_OSS_EP_PORT
+              value: "{{ ecs_admin_oss_ep_port }}"
             - name: REACT_APP_OSS_BUCKET
               value: "{{ ecs_admin_oss_bucket }}"
-            - name: REACT_APP_OSS_URL
-              value: "{{ ecs_admin_oss_url }}"
             - name: REACT_APP_OSS_ACCESS_KEY_ID
               value: "{{ ecs_admin_oss_access_id }}"
             - name: REACT_APP_OSS_ACCESS_KEY_SECRET
               value: "{{ ecs_admin_oss_access_secret }}"
-            - name: REACT_APP_MQTT_URL
-              value: "{{ ecs_admin_mqtt_url }}"
+            - name: REACT_APP_MQTT_PROTOCOL
+              value: "{{ ecs_admin_mqtt_protocol }}"
+            - name: REACT_APP_MQTT_HOSTNAME_EMPTY
+              value: "{{ ecs_admin_mqtt_hostname_empty }}"
+            - name: REACT_APP_MQTT_HOSTNAME
+              value: "{{ ecs_admin_mqtt_hostname }}"
+            - name: REACT_APP_MQTT_PORT
+              value: "{{ ecs_admin_mqtt_port }}"
+            - name: REACT_APP_MQTT_PATH
+              value: "{{ ecs_admin_mqtt_path }}"
             - name: REACT_APP_MQTT_TOPIC_NOTIFY_WARNING
               value: "{{ ecs_admin_mqtt_topic_notify_warning }}"
             - name: REACT_APP_WARNING_FLASH_TIME_S
