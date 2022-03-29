@@ -31,6 +31,7 @@ ecs_api_port: "80"
 ecs_api_path: /v0
 ecs_api_mongodb_connection: "{{ mongodb_connection }}/esc-api?authSource=admin"
 ecs_api_mqtt_url: "{{ mqtt_url }}"
+ecs_api_vector_enabled: false
 
 ecs_admin_version: latest
 ecs_admin_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-admin:{{ ecs_admin_version }}"

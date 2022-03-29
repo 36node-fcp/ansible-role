@@ -1,3 +1,4 @@
+#jinja2: lstrip_blocks: "True", trim_blocks: "True"
 ---
 apiVersion: v1
 kind: Service
@@ -35,6 +36,8 @@ spec:
     metadata:
       labels:
         app: ecs-api
+        name: ecs-api
+        vector.dev/enable: "{{ ecs_api_vector_enabled }}"
     spec:
       restartPolicy: Always
       containers:
