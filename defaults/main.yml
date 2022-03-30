@@ -27,6 +27,7 @@ ecs_robot_hengtong_domain: "{{ domain }}"
 ecs_api_version: latest
 ecs_api_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-api:{{ ecs_api_version }}"
 ecs_api_time: 20210804120000
+ecs_api_replicas: 1
 ecs_api_port: "80"
 ecs_api_path: /v0
 ecs_api_mongodb_connection: "{{ mongodb_connection }}/esc-api?authSource=admin"

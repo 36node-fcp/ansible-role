@@ -22,7 +22,7 @@ metadata:
   labels:
     app: ecs-api
 spec:
-  replicas: 1
+  replicas: {{ ecs_api_replicas }}
   selector:
     matchLabels:
       app: ecs-api
