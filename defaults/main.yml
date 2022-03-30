@@ -95,6 +95,7 @@ ecs_robot_guangxin_mqtt_url: "{{ mqtt_url }}"
 ecs_robot_guangxin_ep:
 ecs_robot_guangxin_vector_enabled: "true"
 ecs_robot_guangxin_vector_topic: false
+ecs_robot_guangxin_fetch_delay: "60"
 
 ecs_robot_hengtong_version: latest
 ecs_robot_hengtong_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-robot-hengtong:{{ ecs_robot_hengtong_version }}"

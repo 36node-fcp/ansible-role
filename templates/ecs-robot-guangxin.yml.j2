@@ -64,6 +64,8 @@ spec:
               value: "{{ mqtt_topic_illegal_record }}"
             - name: GUANGXIN_PLATFORM_ENDPOINT
               value: "{{ ecs_robot_guangxin_ep }}"
+            - name: FETCH_DELAY
+              value: "{{ ecs_robot_guangxin_fetch_delay }}"
           ports:
             - name: http
               containerPort: 80
