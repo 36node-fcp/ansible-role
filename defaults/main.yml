@@ -30,7 +30,7 @@ ecs_api_time: 20210804120000
 ecs_api_replicas: 1
 ecs_api_port: "80"
 ecs_api_path: /v0
-ecs_api_mongodb_connection: "{{ mongodb_connection }}/esc-api?authSource=admin"
+ecs_api_mongodb_connection: "{{ mongodb_connection }}/ecs-api?authSource=admin"
 ecs_api_mqtt_url: "{{ mqtt_url }}"
 ecs_api_vector_enabled: false
 
@@ -90,7 +90,7 @@ ecs_robot_guangxin_time: 20210804120000
 ecs_robot_guangxin_port: "80"
 ecs_robot_guangxin_log_level: info
 ecs_robot_guangxin_path: /v0
-ecs_robot_guangxin_mongodb_connection: "{{ mongodb_connection }}/esc-robot-guangxin?authSource=admin"
+ecs_robot_guangxin_mongodb_connection: "{{ mongodb_connection }}/ecs-robot-guangxin?authSource=admin"
 ecs_robot_guangxin_mqtt_url: "{{ mqtt_url }}"
 ecs_robot_guangxin_ep:
 ecs_robot_guangxin_vector_enabled: "true"
