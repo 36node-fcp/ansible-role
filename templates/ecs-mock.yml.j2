@@ -26,7 +26,9 @@ spec:
             - name: DEPLOY_TIME
               value: "{{ ecs_mock_time }}"
             - name: MQTT_URL
-              value: "{{ ecs_mock_mqtt_url}}"
+              value: "{{ ecs_mock_mqtt_url }}"
+            - name: MOCK_TRACK_DELAY
+              value: "{{ ecs_mock_track_delay }}"
           command: ["npm"]
           args: ["run", "mock"]
           resources:

@@ -125,3 +125,4 @@ ecs_mock_version: latest
 ecs_mock_image: "registry.cn-beijing.aliyuncs.com/36node/fcp-ecs-api:{{ ecs_mock_version }}"
 ecs_mock_time: 20210804120000
 ecs_mock_mqtt_url: "{{ mqtt_url }}"
+ecs_mock_track_delay: 60
